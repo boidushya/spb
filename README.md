@@ -6,6 +6,10 @@ A script that downloads shitpostbot source images according to query you provide
     ```python
     pip install beautifulsoup4
     ```
+  * Requests
+    ```python
+    pip install requests
+    ```
 
 
 # Usage:
