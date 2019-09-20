@@ -17,6 +17,6 @@ A script that downloads shitpostbot source images according to query you provide
 python fetch.py -q [query]
 ```
 If you want a random image, just type
-```python
+```
 python fetch.py -q --rand
 ```
