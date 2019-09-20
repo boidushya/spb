@@ -13,7 +13,7 @@ def reqImg():
     img_url += eval(content)['sub']['img']['full'].replace('\\', '')
     return img_url
 
-def get_lnk(query):
+def get_lnk(query,sort = 'random'):
     url = "https://www.shitpostbot.com/gallery/sourceimages?review_state=accepted&query=" + query +"&order=total_rating&direction=DESC"
     response = urllib.request.urlopen(url)
     soup = bs(response,'lxml')
@@ -23,14 +23,16 @@ def get_lnk(query):
     if len(result) == 0:
         raise Exception('Sorry, couldn\'t find anything :(')
     else:
-        fin = rc(result)
+        if sort == 'random':
+            fin = rc(result)
+        elif sort == 'top':
+            fin = result[0]
         return 'https://www.shitpostbot.com' + fin
 
-def get_img(cmd):
-    url = get_lnk(cmd)
+def get_img(cmd,sort='random'):
+    url = get_lnk(cmd,sort)
     response = urllib.request.urlopen(url)
     soup = bs(response,'lxml')
-    # result = []
     for div in soup.findAll('div', attrs={'style':'padding-top: 15px'}):
         return 'https://www.shitpostbot.com' + (div.find('a')['href'])
 
@@ -50,6 +52,11 @@ elif '-q' in sys.argv:
         image = reqImg()
         dl(image)
     else:
-        url = get_img(str(sys.argv[index + 1]))
-        print('Downloading %s from ShitPostBot...'%(str(sys.argv[index + 1])))
-        dl(url)
+        if '--top' in sys.argv:
+            url = get_img(str(sys.argv[index + 1]),'top')
+            print('Downloading the top post containing %s from ShitPostBot...'%(str(sys.argv[index + 1])))
+            dl(url)
+        else:
+            url = get_img(str(sys.argv[index + 1]))
+            print('Downloading %s from ShitPostBot...'%(str(sys.argv[index + 1])))
+            dl(url)
