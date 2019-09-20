@@ -1,6 +1,5 @@
 from bs4 import BeautifulSoup as bs
 import urllib.request
-from pprint import pprint
 from random import choice as rc
 import sys
 import os
