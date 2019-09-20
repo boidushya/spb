@@ -1,3 +1,7 @@
+#This code was written by Boidushya Bhattacharya on Friday, 20 September 2019 at 15:59 p.m.
+#Reddit: https://reddit.com/u/Boidushya
+#Facebook: https://facebook.com/soumyadipta.despacito
+
 from bs4 import BeautifulSoup as bs
 import urllib.request
 from random import choice as rc
