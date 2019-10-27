@@ -10,6 +10,10 @@ A script that downloads shitpostbot source images according to query you provide
     ```python
     pip install requests
     ```
+  * lxml
+    ```python
+    pip install lxml
+    ``|
 
 
 # Usage:
