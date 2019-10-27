@@ -13,7 +13,7 @@ A script that downloads shitpostbot source images according to query you provide
   * lxml
     ```python
     pip install lxml
-    ``|
+    ```
 
 
 # Usage:
